@@ -13,7 +13,7 @@ Learn more: https://nextjs.org/docs/app/building-your-application/deploying/stat
 npx create-next-app --example with-static-export nextjs-microsite
 ```
 
-### modify package.json to set the dependencies to
+### Modify package.json to set the dependencies to
 ```json
   "dependencies": {
     "@cloudflare/next-on-pages": "^1.13.3",
@@ -31,38 +31,39 @@ npx create-next-app --example with-static-export nextjs-microsite
   }
 ```
 
-### update package-lock.json
+### Update package-lock.json
 ```bash
 npm update
 ```
 
-### create Dockerfile at the parent directory of "nextjs-microsite" folder
+### Create Dockerfile at the parent directory of "nextjs-microsite" folder
+[Dockerfile](Dockerfile)
 
-## build and run Docker image
+## Build and Run Docker Image
 
-# Build the docker image defined in the current folder with "my-microsite" as the tag
+### Build the docker image defined in the current folder with "my-microsite" as the tag
 ```bash
 docker build -t my-microsite .
 ```
 
-### inspect a docker image
+### Inspect a docker image (optional)
 ```bash
 docker image inspect my-microsite
 ```
 
-### run the image
+### Run the image
 ```bash
 docker run -it my-microsite /bin/sh
 ```
 
-### in the image
-#### build the project
+### Inside the image
+#### Build the project
 ```bash
 npm run build
 ```
 (The generated documents can be found at "out" directory.)
 
-#### upload the project to Cloudflare
+#### Upload the project to Cloudflare
 ```bash
 CLOUDFLARE_API_TOKEN="<api-token>" CLOUDFLARE_ACCOUNT_ID="<account-id>" npx wrangler pages deploy out --project-name=curl-project1
 ```
